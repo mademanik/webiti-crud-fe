@@ -1,8 +1,25 @@
-# React + Vite
+# webiti-crud-fe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Prerequisite
+1. Node JS version : v18.20.2
+   ```
+   node -v
+   v18.20.2
+   ```
 
-Currently, two official plugins are available:
+### Installation Steps
+1. clone this repo
+   ```
+   git clone https://github.com/mademanik/webiti-crud-fe.git
+   ```
+2. npm install
+   ```
+   cd webiti-crud-fe
+   npm install
+   ```
+3. start backend server from this repo : https://github.com/mademanik/webiti-crud
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+4. npm start
+    ```
+   npm start
+   ```
