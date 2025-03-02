@@ -8,6 +8,7 @@ import {useAuth} from "./contexts/AuthContext.jsx";
 import Users from "./pages/Users.jsx";
 import Products from "./pages/Products.jsx";
 import Orders from "./pages/Orders.jsx";
+import DashboardHome from "./pages/DashboardHome.jsx";
 
 
 const App = () => {
@@ -20,11 +21,18 @@ const App = () => {
                 <Route path="/login" element={!isAuthenticated ? <Login/> : <Navigate to="/dashboard"/>}/>
 
                 {/* Dashboard Layout with Nested Routes */}
+                {/*<Route path="/dashboard/*" element={isAuthenticated ? <Dashboard/> : <Navigate to="/login"/>}>*/}
+                {/*    <Route index element={<h2>Welcome to Dashboard</h2>}/>*/}
+                {/*    <Route path="users" element={<Users/>}/>*/}
+                {/*    <Route path="products" element={<Products/>}/>*/}
+                {/*    <Route path="orders" element={<Orders/>}/>*/}
+                {/*</Route>*/}
+
                 <Route path="/dashboard/*" element={isAuthenticated ? <Dashboard/> : <Navigate to="/login"/>}>
-                    <Route index element={<h2>Welcome to Dashboard</h2>}/>
-                    <Route path="users" element={<Users/>}/>
-                    <Route path="products" element={<Products/>}/>
-                    <Route path="orders" element={<Orders/>}/>
+                    <Route index element={<DashboardHome />} />
+                    <Route path="users" element={<Users/>} />
+                    <Route path="products" element={<Products/>} />
+                    <Route path="orders" element={<Orders/>} />
                 </Route>
 
                 {/* Catch-all Route */}

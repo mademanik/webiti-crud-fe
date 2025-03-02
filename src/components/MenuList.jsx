@@ -9,7 +9,7 @@ const MenuList = ({darkTheme}) => {
     const navigate = useNavigate();
     return (
         <Menu theme={darkTheme ? 'dark' : 'light'} mode="inline" className="menu-bar">
-            <Menu.Item key="home" icon={<HomeOutlined/>}>
+            <Menu.Item key="home" icon={<HomeOutlined/>} onClick={() => navigate("/dashboard")}>
                 Home
             </Menu.Item>
             <Menu.Item key="users" icon={<UserOutlined />} onClick={() => navigate("/dashboard/users")}>
