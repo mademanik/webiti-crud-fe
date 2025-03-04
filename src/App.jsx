@@ -20,14 +20,6 @@ const App = () => {
                 <Route path="/" element={!isAuthenticated ? <Register/> : <Navigate to="/dashboard"/>}/>
                 <Route path="/login" element={!isAuthenticated ? <Login/> : <Navigate to="/dashboard"/>}/>
 
-                {/* Dashboard Layout with Nested Routes */}
-                {/*<Route path="/dashboard/*" element={isAuthenticated ? <Dashboard/> : <Navigate to="/login"/>}>*/}
-                {/*    <Route index element={<h2>Welcome to Dashboard</h2>}/>*/}
-                {/*    <Route path="users" element={<Users/>}/>*/}
-                {/*    <Route path="products" element={<Products/>}/>*/}
-                {/*    <Route path="orders" element={<Orders/>}/>*/}
-                {/*</Route>*/}
-
                 <Route path="/dashboard/*" element={isAuthenticated ? <Dashboard/> : <Navigate to="/login"/>}>
                     <Route index element={<DashboardHome />} />
                     <Route path="users" element={<Users/>} />

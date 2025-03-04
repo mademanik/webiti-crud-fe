@@ -5,7 +5,6 @@ import {useNavigate} from "react-router-dom";
 
 const UseLogin = () => {
     const {login} = useAuth();
-    const navigate = useNavigate();
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(null);
 
@@ -27,7 +26,8 @@ const UseLogin = () => {
                 const userData = await getUserData(data.data.accessToken);
                 if (userData) {
                     const expiresAt = Date.now() + data.data.expiresIn;
-                    login(data.data.accessToken, userData, expiresAt);
+                    const refreshExpiresAt = data.data.refreshTokenExpiresIn;
+                    login(data.data.accessToken, userData, data.data.refreshToken, expiresAt, refreshExpiresAt);
                 } else {
                     message.error('Failed to retrieve user data', 3);
                 }
