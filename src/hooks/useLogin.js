@@ -26,7 +26,8 @@ const UseLogin = () => {
                 message.success(data.message, 3);
                 const userData = await getUserData(data.data.accessToken);
                 if (userData) {
-                    login(data.data.accessToken, userData);
+                    const expiresAt = Date.now() + data.data.expiresIn;
+                    login(data.data.accessToken, userData, expiresAt);
                 } else {
                     message.error('Failed to retrieve user data', 3);
                 }

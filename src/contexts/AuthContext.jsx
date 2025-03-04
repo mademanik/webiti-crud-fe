@@ -10,20 +10,36 @@ export const AuthProvider = ({children}) => {
     useEffect(() => {
         const storeData = JSON.parse(localStorage.getItem("user_data"));
         if (storeData) {
-            const {userToken, user} = storeData;
-            setToken(userToken);
-            setUserData(user);
-            setIsAuthenticated(true);
+            const { userToken, user, expiresAt } = storeData;
+            if (Date.now() < expiresAt) {
+                setToken(userToken);
+                setUserData(user);
+                setIsAuthenticated(true);
+
+                // Schedule auto-logout when the token expires
+                const timeout = expiresAt - Date.now();
+                setTimeout(() => {
+                    logout();
+                }, timeout);
+            } else {
+                logout();
+            }
         }
     }, []);
 
-    const login = (newToken, newData) => {
-        localStorage.setItem("user_data", JSON.stringify({userToken: newToken, user: newData}),
+
+    const login = (newToken, newData, expiresAt) => {
+        localStorage.setItem("user_data", JSON.stringify({userToken: newToken, user: newData, expiresAt}),
         );
 
         setToken(newToken);
         setUserData(newData);
         setIsAuthenticated(true);
+
+        const timeout = expiresAt - Date.now();
+        setTimeout(() => {
+            logout();
+        }, timeout);
     };
 
     const logout = () => {
